@@ -1,0 +1,6 @@
+
+
+
+session_url:    "/webapi/v1/admin/authenticate.php"
+UNIFAS_login_url : "login.php"
+Edit_API: "admin/accessPointEdit.php?context=getdata&aid=1362"

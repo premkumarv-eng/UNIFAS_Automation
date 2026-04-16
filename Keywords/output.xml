@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.3 on linux)" generated="2026-03-20T16:14:38.117499" rpa="false" schemaversion="5">
+<suite id="s1" name="Org" source="/home/vvdn/Documents/UNIFAS_CLOUD/UNIFAS_Automation/UNIFAS/Keywords/org.robot">
+<test id="s1-t1" name="Session Login Test" line="17">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-20T16:14:38.241305" level="INFO">Creating Session using : alias=mysession, url=https://uf17-fdev.unifas.jp/UNIFAS/MS/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-20T16:14:38.241117" elapsed="0.000403"/>
+</kw>
+<kw name="Login To Application">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-20T16:14:40.275607" level="INFO">GET Request : url=https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/login.php 
+ path_url=/UNIFAS/MS/admin/login.php 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-20T16:14:40.275815" level="INFO">GET Response : url=https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/login.php 
+ status=200, reason=OK 
+ headers={'Server': 'openresty', 'Date': 'Fri, 20 Mar 2026 10:44:40 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '2378', 'Connection': 'keep-alive', 'Cache-Control': 'no-store, no-cache, must-revalidate', 'Pragma': 'no-cache', 'Expires': 'Thu, 19 Nov 1981 08:52:00 GMT', 'X-Content-Type-Options': 'nosniff', 'X-FRAME-Options': 'DENY', 'X-XSS-PROTECTION': '1; mode=block', 'Strict-Transport-Security': 'max-age=31536000, max-age=31536000; includeSubDomains', 'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; worker-src blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-ancestors 'none';", 'Set-Cookie': '5a3a5d9c-6b53-4946-a503-cbf3cb236345=b333d08c35ae85e9ea2bc456aca6ee3914a04983; path=/UNIFAS/MS; secure; HttpOnly; SameSite=None'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+	&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+	&lt;title&gt;UNIFAS UI Login&lt;/title&gt;
+	&lt;link rel="stylesheet" href="../ui/css/import.css"&gt;
+	&lt;script src="../ui/js/import.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;div class="ui-login-hero"&gt;
+		&lt;div class="ui-login-hero-contents"&gt;
+			&lt;h1 class="ui-loigin-hero-logo"&gt;&lt;img src="../images/logo_unifas@2x.png" alt="UNIFAS" /&gt;&lt;/h1&gt;
+			&lt;p&gt;UNIFAS Managed Server&lt;br&gt;Wireless Network Management System&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;!-- 未認証 --&gt;
+	&lt;div class="container ui-login-contents"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="ui-login-form col-lg-4 offset-lg-4"&gt;
+				&lt;p id="error-message" class="alert alert-danger ui-alert-error" style="display:none;"&gt;&lt;/p&gt;
+				&lt;form&gt;
+					&lt;div class="input-group form-group"&gt;
+						&lt;div class="input-group-prepend"&gt;
+							&lt;span class="input-group-text ui-login-input-icon"&gt;
+								&lt;i class="fa fa-globe fa-fw" aria-hidden="true"&gt;&lt;/i&gt;
+							&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;input name="SITE" type="text" class="form-control ui-login-input" placeholder="Site"  maxlength="64" style="ime-mode: disabled;"&gt;
+					&lt;/div&gt;
+					&lt;div class="input-group form-group"&gt;
+						&lt;div class="input-group-prepend"&gt;
+							&lt;span class="input-group-text ui-login-input-icon"&gt;&lt;i class="fa fa-id-card fa-fw" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;input name="LID" type="text" class="form-control ui-login-input" placeholder="Login ID"  maxlength="64" style="ime-mode: disabled;"&gt;
+					&lt;/div&gt;
+					&lt;div class="form-group text-right"&gt;
+						&lt;div class="input-group"&gt;
+							&lt;div class="input-group-prepend"&gt;
+								&lt;span class="input-group-text ui-login-input-icon"&gt;&lt;i class="fa fa-lock fa-fw" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+							&lt;/div&gt;
+							&lt;input id="password-input" name="LPWD" type="password" class="form-control ui-login-input" placeholder="Password" maxlength="40"&gt;
+						&lt;/div&gt;
+						&lt;button type="button" class="btn btn-xs ui-btn-primary ui-show-password" data-password-id="password-input"&gt;パスワードを表示&lt;/button&gt;
+					&lt;/div&gt;
+					&lt;button id="login-button" type="button" class="btn ui-btn-primary ui-login-btn"&gt;ログイン&lt;/button&gt;
+				&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;&lt;!-- /.row --&gt;
+	&lt;/div&gt;&lt;!-- /.container --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+ 
+ </msg>
+<msg time="2026-03-20T16:14:40.275980" level="INFO">/home/vvdn/Documents/UNIFAS_CLOUD/UNIFAS_Automation/UNIFAS/UNIFAS/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uf17-fdev.unifas.jp'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-03-20T16:14:40.276191" level="INFO">${resp1} = &lt;Response [200]&gt;</msg>
+<var>${resp1}</var>
+<arg>${session}</arg>
+<arg>${LOGIN_PAGE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-20T16:14:38.241972" elapsed="2.034260"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Login Page Status: ${resp1.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.276448" elapsed="0.000968"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-03-20T16:14:40.278288" level="INFO">${headers} = {'Content-Type': 'application/x-www-form-urlencoded', 'Referer': 'https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/login.php', 'Origin': 'https://uf17-fdev.unifas.jp/UNIFAS/MS/', 'User-Agent': 'Mozilla/5.0...</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+<arg>Referer=${BASE_URL}${LOGIN_PAGE}</arg>
+<arg>Origin=${BASE_URL}</arg>
+<arg>User-Agent=Mozilla/5.0</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.277600" elapsed="0.000726"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-03-20T16:14:40.846548" level="INFO">POST Request : url=https://uf17-fdev.unifas.jp/UNIFAS/MS/webapi/v1/admin/authenticate.php 
+ path_url=/UNIFAS/MS/webapi/v1/admin/authenticate.php 
+ headers={'User-Agent': 'Mozilla/5.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded', 'Referer': 'https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/login.php', 'Origin': 'https://uf17-fdev.unifas.jp/UNIFAS/MS/', 'Cookie': '5a3a5d9c-6b53-4946-a503-cbf3cb236345=b333d08c35ae85e9ea2bc456aca6ee3914a04983', 'Content-Length': '35'} 
+ body=SITE=vvdn.mysite&amp;LID=vvdn&amp;LPWD=vvdn 
+ </msg>
+<msg time="2026-03-20T16:14:40.846672" level="INFO">POST Response : url=https://uf17-fdev.unifas.jp/UNIFAS/MS/webapi/v1/admin/authenticate.php 
+ status=200, reason=OK 
+ headers={'Server': 'openresty', 'Date': 'Fri, 20 Mar 2026 10:44:40 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '108', 'Connection': 'keep-alive', 'Cache-Control': 'no-store, no-cache, must-revalidate,private, no-store, no-cache, must-revalidate', 'Pragma': 'no-cache,no-cache', 'Expires': 'Thu, 19 Nov 1981 08:52:00 GMT,0', 'Set-Cookie': '5a3a5d9c-6b53-4946-a503-cbf3cb236345=a948b6d9eef91c6c67f7e7fe13b07347e900f313; path=/UNIFAS/MS; secure; HttpOnly; SameSite=None', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Strict-Transport-Security': 'max-age=31536000, max-age=31536000; includeSubDomains', 'Content-Security-Policy': "default-src 'self'; frame-ancestors 'none';"} 
+ body={"success":true,"message":"ok","redirect":"https:\/\/uf17-fdev.unifas.jp\/UNIFAS\/MS\/admin\/dashboard.php"} 
+ </msg>
+<msg time="2026-03-20T16:14:40.846825" level="INFO">/home/vvdn/Documents/UNIFAS_CLOUD/UNIFAS_Automation/UNIFAS/UNIFAS/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uf17-fdev.unifas.jp'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-03-20T16:14:40.847005" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${session}</arg>
+<arg>${LOGIN_API}</arg>
+<arg>data=${token_payload}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.278467" elapsed="0.568585"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>-------- LOGIN RESPONSE --------</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.847267" elapsed="0.000406"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Status: ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.847815" elapsed="0.000792"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Body: ${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.848760" elapsed="0.000670"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-20T16:14:40.850091" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.849550" elapsed="0.000610"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response.headers}</arg>
+<arg>Set-Cookie</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.850840" elapsed="0.000721"/>
+</kw>
+<msg time="2026-03-20T16:14:40.851685" level="INFO">${cookie_exists} = True</msg>
+<var>${cookie_exists}</var>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.headers}</arg>
+<arg>Set-Cookie</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.850281" elapsed="0.001445"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${cookie_exists}' == 'False'</arg>
+<arg>Fail</arg>
+<arg>❌ Login Failed</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.851891" elapsed="0.000408"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-03-20T16:14:40.853017" level="INFO">${set_cookie} = 5a3a5d9c-6b53-4946-a503-cbf3cb236345=a948b6d9eef91c6c67f7e7fe13b07347e900f313; path=/UNIFAS/MS; secure; HttpOnly; SameSite=None</msg>
+<var>${set_cookie}</var>
+<arg>${response.headers}</arg>
+<arg>Set-Cookie</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.852443" elapsed="0.000632"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Cookie: ${set_cookie}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.853212" elapsed="0.000252"/>
+</kw>
+<arg>mysession</arg>
+<status status="PASS" start="2026-03-20T16:14:38.241752" elapsed="2.611774"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-20T16:14:42.007004" level="INFO">GET Request : url=https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/accessPointList.php 
+ path_url=/UNIFAS/MS/admin/accessPointList.php 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': '5a3a5d9c-6b53-4946-a503-cbf3cb236345=a948b6d9eef91c6c67f7e7fe13b07347e900f313'} 
+ body=None 
+ </msg>
+<msg time="2026-03-20T16:14:42.007752" level="INFO">GET Response : url=https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/accessPointList.php 
+ status=200, reason=OK 
+ headers={'Server': 'openresty', 'Date': 'Fri, 20 Mar 2026 10:44:41 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '49488', 'Connection': 'keep-alive', 'Cache-Control': 'no-store, no-cache, must-revalidate', 'Pragma': 'no-cache', 'Expires': 'Thu, 19 Nov 1981 08:52:00 GMT', 'X-Content-Type-Options': 'nosniff', 'X-FRAME-Options': 'DENY', 'X-XSS-PROTECTION': '1; mode=block', 'Strict-Transport-Security': 'max-age=31536000, max-age=31536000; includeSubDomains', 'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; worker-src blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-ancestors 'none';", 'Set-Cookie': '5a3a5d9c-6b53-4946-a503-cbf3cb236345=a948b6d9eef91c6c67f7e7fe13b07347e900f313; path=/UNIFAS/MS; secure; HttpOnly; SameSite=None'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+&lt;title&gt;UNIFAS | アクセスポイント設定&lt;/title&gt;
+&lt;link rel="stylesheet" href="https://uf17-fdev.unifas.jp/UNIFAS/MS/ui/css/import.css"&gt;
+&lt;script id="rpm" value="1"&gt;&lt;/script&gt;
+&lt;script src="https://uf17-fdev.unifas.jp/UNIFAS/MS/ui/js/import.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+// public functions
+  /*-----------------------------------------------------*//**
+   *  @brief  指定したAPI_URLへGETリクエストを行う
+   *
+   *  @param  [in]    url        : URL
+   *
+   *  @retval json               : リダイレクト先のURLが存在しない場合、
+   *                               レスポンスをJSONで返す
+   *
+   *//*--------------------------------------------------------
+   */
+function uiGet(url) {
+	return $.get('https://uf17-fdev.unifas.jp/UNIFAS/MS/webapi/v1/' + url)
+		.then(function (json) {
+			if (json.redirect) {
+				document.location = json.redirect;
+			} else {
+				return json;
+			}
+		});
+}
+  /*-----------------------------------------------------*//**
+   *  @brief  指定したAPI_URLへPOSTリクエストを行う
+   *
+   *  @param  [in]    url         : URL
+   *  @param  [in]    data        : 送信するデータ
+   *
+   *  @retval json                : リダイレクト先のURLが存在しない場合、
+   *                                レスポンスをJSONで返す
+   *
+   *//*--------------------------------------------------------
+   */
+function uiPost(url, data) {
+	return $.post('https://uf17-fdev.unifas.jp/UNIFAS/MS/webapi/v1/' + url, data)
+		.then(function (json) {
+			if (json.redirect) {
+				document.location = json.redirect;
+			} else {
+				return json;
+			}
+		});
+}
+  /*-----------------------------------------------------*//**
+   *  @brief  指定したAPI_URLへPUTリクエストを行う
+   *
+   *  @param  [in]    url        : URL
+   *  @param  [in]    data       : 送信するデータ
+   *
+   *  @retval json               : リダイレクト先のURLが存在しない場合、
+   *                               レスポンスをJSONで返す
+   *
+   *//*--------------------------------------------------------
+   */
+function uiPut(url, data) {
+	return $.ajax({
+		url: 'https://uf17-fdev.unifas.jp/UNIFAS/MS/webapi/v1/' + url,
+		type: 'POST',
+		data: data,
+		headers: {
+			'X-HTTP-Method-Override': 'PUT'
+		}
+	}).then(function (json) {
+		if (json.redirect) {
+			document.location = json.redirect;
+		} else {
+			return json;
+		}
+	});
+}
+  /*-----------------------------------------------------*//**
+   *  @brief  指定したAPI_URLへPATCHリクエストを行う
+   *
+   *  @param  [in]    url        : URL
+   *  @param  [in]    data       : 送信するデータ
+   *
+   *  @retval json               : リダイレクト先のURLが存在しない場合、
+   *                               レスポンスをJSONで返す
+   *
+   *//*--------------------------------------------------------
+   */
+function uiPatch(url, data) {
+	return $.ajax({
+		url: 'https://uf17-fdev.unifas.jp/UNIFAS/MS/webapi/v1/' + url,
+		type: 'POST',
+		data: data,
+		headers: {
+			'X-HTTP-Method-Override': 'PATCH'
+		}
+	}).then(function (json) {
+		if (json.redirect) {
+			document.location = json.redirect;
+		} else {
+			return json;
+		}
+	});
+}
+  /*-----------------------------------------------------*//**
+   *  @brief  指定したAPI_URLへDELETEリクエストを行う
+   *
+   *  @param  [in]    url        : URL
+   *  @param  [in]    data       : 送信するデータ
+   *
+   *  @retval json               : リダイレクト先のURLが存在しない場合、
+   *                               レスポンスをJSONで返す
+   *
+   *//*--------------------------------------------------------
+   */
+function uiDelete(url, data) {
+	return $.ajax({
+		url: 'https://uf17-fdev.unifas.jp/UNIFAS/MS/webapi/v1/' + url,
+		type: 'POST',
+		data: data,
+		headers: {
+			'X-HTTP-Method-Override': 'DELETE'
+		},
+		timeout: 0
+	}).then(function (json) {
+		if (json.redirect) {
+			document.location = json.redirect;
+		} else {
+			return json;
+		}
+	});
+}
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body class="ui-skip-enter"&gt;
+&lt;!-- UI-Header --&gt;
+&lt;nav id="ui-header" class="navbar navbar-light navbar-expand-md fixed-top p-0" style="background-color:#354b6b;"&gt;
+	&lt;a id="ui-header-logo"
+		class="navbar-brand"
+		href="https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/dashboard.php"
+		style="background-image: url('https://uf17-fdev.unifas.jp/UNIFAS/MS/images/logo_unifas_bg@2x.png');"&gt;
+		&lt;img src="https://uf17-fdev.unifas.jp/UNIFAS/MS/images/logo_unifas@2x.png" alt="" style="height:25px" /&gt;
+	&lt;/a&gt;
+	&lt;!-- スマホメニューボタン --&gt;
+	&lt;button id="ui-header-button-xs" type="button" 
+	class="navbar-toggler mr-3" 
+	data-toggle="collapse" 
+	data-target="#ui-sidebar" 
+	aria-controls="sidebar" 
+	aria-expanded="false" 
+	aria-label="ナビゲーションの切替"&gt;
+		&lt;span class="navbar-toggler-icon m-1"&gt;&lt;/span&gt;
+	&lt;/button&gt;
+
+	&lt;!-- UI-Header-Menu --&gt;
+	&lt;div id="ui-header-menu" class="navbar-collapse collapse d-md-none"&gt;
+		&lt;ul class="navbar-nav ml-auto float-right p-3 ui-help"&gt;
+			&lt;li class="nav-item"&gt;&lt;a href="https://uf17-fdev.unifas.jp/UNIFAS/MS/help/UNIFAS_Managed_Server_Admin.pdf" target="_blank" class="nav-link"&gt;&lt;i class="fa fa-question-circle" aria-hidden="true"&gt;&lt;/i&gt;ヘルプ&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+		&lt;!-- /UI-Header-Menu --&gt;
+&lt;/nav&gt;
+&lt;!-- /UI-Header --&gt;
+
+&lt;!-- UI-Container --&gt;
+&lt;div id="ui-container" class="container-fluid"&gt;
+	&lt;div class="row ui-layout-flex"&gt;
+
+				&lt;div id="ui-sidebar" class="fixedsticky"&gt;
+					&lt;div class="ui-nav-account ui-nav-account-fixed-top"&gt;
+						&lt;a class="ui-account-name ui-dropdown" href="#"&gt;
+							&lt;i class="fa fa-share-alt-square" aria-hidden="true"&gt;&lt;/i&gt;
+							vvdn.mysite
+						&lt;/a&gt;
+						&lt;ul class="ui-account-menu"&gt;
+							&lt;li&gt;&lt;a href="https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/myAccountEdit.php"&gt;マイアカウントの変更&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a href="#" onclick="uiGet('admin/reset-subsite.php')"&gt;トップサイトに戻る&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a href="#" onclick="uiGet('admin/reset-subsite.php')"&gt;サブサイト一覧&lt;/a&gt;&lt;/li&gt;
+							&lt;li class="ui-nav-separator"&gt;&lt;/li&gt;
+							&lt;li&gt;
+								&lt;a href="#" onclick="uiGet('admin/authenticate.php?logout')"&gt;
+									ログアウト
+									&lt;i class="fa fa-sign-out float-right" aria-hidden="true"&gt;&lt;/i&gt;
+								&lt;/a&gt;
+							&lt;/li&gt;
+						&lt;/ul&gt;
+					&lt;/div&gt;
+									&lt;h3 class="ui-nav-title"&gt;トップサイト管理&lt;/h3&gt;
+				&lt;!-- UI-Nav-Menu --&gt;
+				&lt;ul class="ui-nav-menu"&gt;
+					&lt;li class="ui-menu-item"&gt;
+						&lt;a class="" href="#" onclick="uiGet('admin/reset-subsite.php')"&gt;
+							&lt;i class="fa fa-arrow-up fa-fw" aria-hidden="true"&gt;&lt;/i&gt;トップサイトに戻る
+						&lt;/a&gt;
+					&lt;/li&gt;
+				&lt;/ul&gt;
+&lt;h3 class="ui-nav-title"&gt;サブサイト管理&lt;/h3&gt;&lt;ul class="ui-nav-menu"&gt;
+
+							&lt;li id='menu-2' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/dashboard.php' class=' '&gt;
+									&lt;i class="fa fa-tachometer-alt fa-fw" aria-hidden="true"&gt;&lt;/i&gt;
+									 ダッシュボード 
+								&lt;/a&gt;&lt;/li&gt;
+
+							&lt;li id='menu-3' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/#' class='ui-has-submenu ui-multiple-lines'&gt;
+									&lt;i class="fa fa-wifi fa-fw" aria-hidden="true"&gt;&lt;/i&gt;
+									 セキュリティグループ管理 
+								&lt;/a&gt;					&lt;div class="ui-nav-submenu"&gt;
+						&lt;h4 class="ui-submenu-title"&gt;セキュリティグループ管理&lt;/h4&gt;
+						&lt;p class="ui-submenu-note"&gt;
+							ESSID関連の設定を行います。
+						&lt;/p&gt;
+						&lt;ul&gt;
+
+							&lt;li id='menu-4' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/securityGroupList.php' class=' '&gt;
+									
+									 セキュリティグループ設定 
+								&lt;/a&gt;&lt;/li&gt;
+
+							&lt;li id='menu-5' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/macGroupList.php' class=' '&gt;
+									
+									 MACフィルタリング設定 
+								&lt;/a&gt;&lt;/li&gt;
+
+							&lt;li id='menu-6' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/disasterOperationSetting.php' class=' '&gt;
+									
+									 00000JAPAN設定 
+								&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+							&lt;li id='menu-7' class='ui-menu-item current'&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/#' class='ui-has-submenu '&gt;
+									&lt;i class="fa fa-broadcast-tower fa-fw" aria-hidden="true"&gt;&lt;/i&gt;
+									 アクセスポイント管理 
+								&lt;/a&gt;					&lt;div class="ui-nav-submenu"&gt;
+						&lt;h4 class="ui-submenu-title"&gt;アクセスポイント管理&lt;/h4&gt;
+						&lt;p class="ui-submenu-note"&gt;
+							アクセスポイント関連の設定を行います。
+						&lt;/p&gt;
+						&lt;ul&gt;
+
+							&lt;li id='menu-8' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/accessPointList.php' class=' '&gt;
+									
+									 アクセスポイント設定 
+								&lt;/a&gt;&lt;/li&gt;
+
+							&lt;li id='menu-9' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/apParallelSettings.php' class=' '&gt;
+									
+									 チャネル一括設定 
+								&lt;/a&gt;&lt;/li&gt;
+
+							&lt;li id='menu-10' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/accessPointMapList.php' class=' '&gt;
+									
+									 マップ設定 
+								&lt;/a&gt;&lt;/li&gt;
+
+							&lt;li id='menu-11' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/snmpAgentList.php' class=' '&gt;
+									
+									 SNMPエージェント設定 
+								&lt;/a&gt;&lt;/li&gt;
+
+							&lt;li id='menu-12' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/unregisteredAccessPointDetectionList.php' class=' '&gt;
+									
+									 常時未登録AP検出設定 
+								&lt;/a&gt;&lt;/li&gt;
+
+							&lt;li id='menu-13' class='ui-menu-item '&gt;
+								&lt;div style='padding-bottom: 12px; cursor:default;'&gt;
+									
+									 ワイヤレスディスプレイ 
+								&lt;/div&gt;&lt;ul class="ui-third-menu"&gt;
+
+							&lt;li id='menu-14' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/wirelessDisplayCommonSetting.php' class=' '&gt;
+									
+									 共通設定 
+								&lt;/a&gt;&lt;/li&gt;
+
+							&lt;li id='menu-15' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/wirelessDisplayp2pAddressList.php' class=' '&gt;
+									
+									 P2Pアドレス設定 
+								&lt;/a&gt;&lt;/li&gt;
+
+							&lt;li id='menu-16' class='ui-menu-item '&gt;
+								&lt;a href='https://uf17-fdev.unifas.jp/UNIFAS/MS/admin/wirelessDisplayp2pAddressDetectionList.php' class=' '&gt;
+									
+									 P2Pアドレス情報検出 
+								&lt;/a&gt;&lt;/li&gt;... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg time="2026-03-20T16:14:42.008191" level="INFO">/home/vvdn/Documents/UNIFAS_CLOUD/UNIFAS_Automation/UNIFAS/UNIFAS/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uf17-fdev.unifas.jp'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-03-20T16:14:42.008373" level="INFO">${resp2} = &lt;Response [200]&gt;</msg>
+<var>${resp2}</var>
+<arg>mysession</arg>
+<arg>admin/accessPointList.php</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-20T16:14:40.853675" elapsed="1.154721"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Status: ${resp2.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-03-20T16:14:42.008600" elapsed="0.000717"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>URL: ${resp2.url}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-03-20T16:14:42.009557" elapsed="0.000466"/>
+</kw>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${resp2.url}</arg>
+<arg>login.php</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2026-03-20T16:14:42.010128" elapsed="0.000616"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-20T16:14:42.382134" level="INFO">GET Request : url=https://uf17-fdev.unifas.jp/UNIFAS/MS/webapi/v1/admin/accessPointEdit.php 
+ path_url=/UNIFAS/MS/webapi/v1/admin/accessPointEdit.php 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': '5a3a5d9c-6b53-4946-a503-cbf3cb236345=a948b6d9eef91c6c67f7e7fe13b07347e900f313'} 
+ body=None 
+ </msg>
+<msg time="2026-03-20T16:14:42.382324" level="INFO">GET Response : url=https://uf17-fdev.unifas.jp/UNIFAS/MS/webapi/v1/admin/accessPointEdit.php 
+ status=200, reason=OK 
+ headers={'Server': 'openresty', 'Date': 'Fri, 20 Mar 2026 10:44:42 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '97', 'Connection': 'keep-alive', 'Cache-Control': 'no-store, no-cache, must-revalidate,private, no-store, no-cache, must-revalidate', 'Pragma': 'no-cache,no-cache', 'Expires': 'Thu, 19 Nov 1981 08:52:00 GMT,0', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Strict-Transport-Security': 'max-age=31536000, max-age=31536000; includeSubDomains', 'Content-Security-Policy': "default-src 'self'; frame-ancestors 'none';"} 
+ body={"success":false,"error":{"":"不正なパラメータが渡されました。"},"redirect":null} 
+ </msg>
+<msg time="2026-03-20T16:14:42.382449" level="INFO">/home/vvdn/Documents/UNIFAS_CLOUD/UNIFAS_Automation/UNIFAS/UNIFAS/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uf17-fdev.unifas.jp'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-03-20T16:14:42.382719" level="INFO">${resp3} = &lt;Response [200]&gt;</msg>
+<var>${resp3}</var>
+<arg>mysession</arg>
+<arg>${EDIT_API}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-20T16:14:42.010877" elapsed="0.371894"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Edit API Status: ${resp3.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-03-20T16:14:42.383149" elapsed="0.001204"/>
+</kw>
+<status status="PASS" start="2026-03-20T16:14:38.240546" elapsed="4.144053"/>
+</test>
+<status status="PASS" start="2026-03-20T16:14:38.118803" elapsed="4.266437"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Org" id="s1" pass="1" fail="0" skip="0">Org</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
